@@ -131,8 +131,16 @@ const ManageAuctions = (props) => {
     }
   };
 
-  function sendItem(documentID) {
+  function sendItem(documentID, auctionName, auctionMinimumBid) {
     props.changeUrl(`https://shopzen.vercel.app/auction/${documentID}`);
+    console.log(auctionName)
+    props.changeName(`Product Name: ${auctionName}`)
+    if(auctionMinimumBid == 0) {
+      props.changePrice("Current Highest Bid: No Bids Yet")
+    } else {
+      props.changePrice(`Current Highest Bid: $${auctionMinimumBid}`)
+    }
+    props.changeCat(`Listing Type: Auctions`)
     setTick(true);
 
     setTimeout(() => {
@@ -304,7 +312,7 @@ const ManageAuctions = (props) => {
                             </td>
 
                             <td>
-                              <Button onClick={() => sendItem(documentID)}>
+                              <Button onClick={() => sendItem(documentID, auctionName, currentBidPrice/100)}>
                                 Send item
                               </Button>
                             </td>

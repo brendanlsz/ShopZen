@@ -42,6 +42,9 @@ const RequestCard = ({}) => {
   const [userEmail, setEmail] = useState("");
   const [adminEmail, setAdminEmail] = useState("");
   const [url, setUrl] = useState("");
+  const [cat, setCat] = useState("");
+  const [price, setPrice] = useState("");
+  const [name, setName] = useState("");
   const [toggle, setToggle] = useState(true);
   const [list, setList] = useState(false);
   const [hideProductModal, setHideProductModal] = useState(true);
@@ -176,13 +179,23 @@ const RequestCard = ({}) => {
               </div>
               {listState == 1 && (
                 <div className="sendManageProduct">
-                  <UserManageProducts changeUrl={(url) => setUrl(url)} />
+                  <UserManageProducts
+                    changeUrl={(url) => setUrl(url)}
+                    changeName={(name) => setName(name)}
+                    changePrice={(price) => setPrice(price)}
+                    changeCat={(cat) => setCat(cat)}
+                  />
                 </div>
               )}
 
               {listState == 2 && (
                 <div className="sendManageProduct">
-                  <UserManageAuctions changeUrl={(url) => setUrl(url)} />
+                  <UserManageAuctions
+                    changeUrl={(url) => setUrl(url)}
+                    changeName={(name) => setName(name)}
+                    changePrice={(price) => setPrice(price)}
+                    changeCat={(cat) => setCat(cat)}
+                  />
                 </div>
               )}
 
@@ -192,6 +205,9 @@ const RequestCard = ({}) => {
                 adminUserEmail={adminEmail}
                 admiUserUid={productAdminUserUID}
                 url={url}
+                name={name}
+                price={price}
+                cat={cat}
               />
             </Modal1>
           </div>
@@ -395,6 +411,9 @@ const RequestCard = ({}) => {
             adminUserEmail={adminEmail}
             admiUserUid={productAdminUserUID}
             url={url}
+            name={name}
+            price={price}
+            cat={cat}
           />
           <Modal2 {...configProductModal}>
             <div className="wrapButton">
@@ -415,11 +434,21 @@ const RequestCard = ({}) => {
               </div>
             </div>
             {listState == 1 && (
-              <UserManageProducts changeUrl={(url) => setUrl(url)} />
+              <UserManageProducts
+                changeUrl={(url) => setUrl(url)}
+                changeName={(name) => setName(name)}
+                changePrice={(price) => setPrice(price)}
+                changeCat={(cat) => setCat(cat)}
+              />
             )}
 
             {listState == 2 && (
-              <UserManageAuctions changeUrl={(url) => setUrl(url)} />
+              <UserManageAuctions
+                changeUrl={(url) => setUrl(url)}
+                changeName={(name) => setName(name)}
+                changePrice={(price) => setPrice(price)}
+                changeCat={(cat) => setCat(cat)}
+              />
             )}
           </Modal2>
         </WithAuth>

@@ -128,9 +128,13 @@ const ManageProducts = (props) => {
     }
   };
 
-  function sendItem(documentID) {
+  function sendItem(documentID, productName, productPrice) {
     setTick(true);
     props.changeUrl(`https://shopzen.vercel.app/product/${documentID}`);
+    console.log(productName)
+    props.changeName(`Product Name: ${productName}`)
+    props.changePrice(`Price: $${productPrice}`)
+    props.changeCat(`Listing Type: Products`)
 
     setTimeout(() => {
       setTick(false);
@@ -310,7 +314,7 @@ const ManageProducts = (props) => {
                           <td>${productPrice / 100}</td>
                           <td>Quantity Available: {quantityAvailable}</td>
                           <td>
-                            <Button onClick={() => sendItem(documentID)}>
+                            <Button onClick={() => sendItem(documentID, productName, productPrice)}>
                               Send item
                             </Button>
                           </td>

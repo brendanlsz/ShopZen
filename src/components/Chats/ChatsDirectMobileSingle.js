@@ -89,7 +89,10 @@ export default function Chats(props) {
 
   useEffect(() => {
     const authObject1 = {projectID: '896f6a0e-9b91-41ff-a3a4-4dedbfe06c10', userName: `${currentUserEmail}`, userSecret: `${currentUserEmail}`}
-    const messageObject = {'text': `<a href="${props.url}">${props.url}</a>`, 'sender_username': `${currentUserEmail}`}
+    const messageObject = {
+      text: `<p><strong>${props.name}</strong></p><p><strong>${props.cat}</strong></p><p><strong>${props.price}</strong></p><a href="${props.url}">${props.url}</a>`,
+      sender_username: `${currentUserEmail}`,
+    };
     sendMessage(authObject1, chatID, messageObject, callback1)
   }, [props.url])
 

@@ -59,9 +59,11 @@ export default function Chats(props) {
       userSecret: `${currentUserEmail}`,
     };
     const messageObject = {
-      text: `<a href="${props.url}">${props.url}</a>`,
+      text: `<p><strong>${props.name}</strong></p><p><strong>${props.cat}</strong></p><p><strong>${props.price}</strong></p><a href="${props.url}">${props.url}</a>`,
       sender_username: `${currentUserEmail}`,
     };
+    console.log(props.url)
+    console.log(props.name)
     sendMessage(authObject1, chatID, messageObject, callback1);
   }, [props.url]);
 
